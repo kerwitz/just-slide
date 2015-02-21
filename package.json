@@ -1,0 +1,13 @@
+{
+    "name": "just-slide",
+    "version": "0.9.0",
+    "description": "A very simplistic pure Javascript, no-dependencies approach to a slider component.",
+    "main": "Gruntfile.js",
+    "author": "Marco Kerwitz <marco@kerwitz.com>",
+    "devDependencies": {
+        "grunt": "~0.4.5",
+        "grunt-contrib-watch": "~0.6.1",
+        "grunt-contrib-less": "~1.0.0",
+        "grunt-contrib-uglify": "~0.7.0"
+    }
+}

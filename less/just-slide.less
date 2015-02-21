@@ -1,0 +1,17 @@
+.just-slide {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    > div {
+        box-sizing: border-box;
+        position: absolute;
+        top: 0; left: 0;
+        // justSlide will add width: 100% * [ number of articles ].
+        article {
+            // justSlide will add width: 100% / [ number of articles ].
+            float: left;
+            box-sizing: border-box;
+        }
+    }
+}

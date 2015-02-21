@@ -1,0 +1,12 @@
+{
+  "name": "just-slide",
+  "version": "0.9.0",
+  "main": [ "css/just-slide.min.css", "js/just-slide.min.js" ],
+  "ignore": [
+      "css/themes",
+      "js/just-slide.js",
+      "less",
+      "Gruntfile.js",
+      "package.json"
+  ]
+}
