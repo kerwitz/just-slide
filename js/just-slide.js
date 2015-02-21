@@ -14,7 +14,7 @@
             enhanced: 'just-slide',
             at_last_child: 'at-last-child',
             at_first_child: 'at-first-child'
-        },\\
+        },
         attributes: {
             current_child_index: 'data-current-child-index'
         }
