@@ -7,6 +7,9 @@
       "js/just-slide.js",
       "less",
       "Gruntfile.js",
-      "package.json"
+      "package.json",
+      ".gitattributes",
+      ".gitignore",
+      "bower.json"
   ]
 }
