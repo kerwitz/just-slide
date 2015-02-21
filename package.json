@@ -1,6 +1,6 @@
 {
     "name": "just-slide",
-    "version": "0.9.0",
+    "version": "0.9.1",
     "description": "A very simplistic pure Javascript, no-dependencies approach to a slider component.",
     "main": "Gruntfile.js",
     "author": "Marco Kerwitz <marco@kerwitz.com>",

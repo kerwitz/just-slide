@@ -1,6 +1,6 @@
 {
   "name": "just-slide",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "main": [ "css/just-slide.min.css", "js/just-slide.min.js" ],
   "ignore": [
       "css/themes",
