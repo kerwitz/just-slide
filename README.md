@@ -1,6 +1,7 @@
 # just-slide
 
 [![Flattr](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=kerwitz&url=https%3A%2F%2Fgithub.com%2Fkerwitz%2Fjust-slide)
+[![Bower version](https://badge.fury.io/bo/just-slide.svg)](http://badge.fury.io/bo/just-slide)
 
 A very simplistic pure Javascript, no-dependencies approach to a slider component.
 
