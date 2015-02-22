@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>just-slide - A very simplistic pure Javascript, no-dependencies approach to a slider component.</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, minimal-ui" />
+        <link rel="stylesheet" href="lib/just-slide/css/just-slide.min.css">
+        <link rel="stylesheet" href="css/main.min.css">
+    </head>
+    <body>
+        <section class="page slider">
+            <button class="previous-button">&larr;</button>
+            <button class="next-button">&rarr;</button>
+            <div>
+                <article>
+                    <div class="content">
+                        <h1>just-slide</h1>
+                        <p>A very simplistic pure Javascript, no-dependencies approach to a slider component.</p>
+                        <iframe src="https://ghbtns.com/github-btn.html?user=kerwitz&repo=just-slide&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+                        <iframe src="https://ghbtns.com/github-btn.html?user=kerwitz&repo=just-slide&type=fork&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+                        <iframe src="https://ghbtns.com/github-btn.html?user=kerwitz&type=follow&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+                    </div>
+                </article>
+                <article>
+                    <div class="content">
+                        <section class="example-basic slider">
+                            <button class="previous-button">&larr; Previous slide</button>
+                            <button class="next-button">&rarr; Next slide</button>
+                            <div>
+                                <article>
+                                    <h3>Hey there!</h3>
+                                    <p>This is the most basic implementation of just-slide, no additional styles applied.</p>
+                                </article>
+                                <article>
+                                    <h3>Nice!</h3>
+                                    <p>You made it to the second slide!</p>
+                                </article>
+                                <article>
+                                    <h3>By the way..</h3>
+                                    <p>Different slide heights are<br><br><br><br>supported!</p>
+                                </article>
+                            </div>
+                        </section>
+                    </div>
+                </article>
+                <article>
+                    <div class="content">
+                        <section class="example-elegant slider">
+                            <button class="previous-button">&larr;</button>
+                            <button class="next-button">&rarr;</button>
+                            <div>
+                                <article><p>You may style the slider however you like.</p></article>
+                                <article><p>Use css transitions to animate the slide effect.</p></article>
+                                <article><p>Even the height adjustment can be<br><br><br><br>animated.</p></article>
+                            </div>
+                        </section>
+                    </div>
+                </article>
+                <article>
+                    <div class="content">
+                        <section class="example-controls slider">
+                            <div>
+                                <article>
+                                    <p>
+                                        You are free to apply whichever controls you want.<br>
+                                        Use your keyboard (&larr; &rarr;) to navigate this example ;)
+                                    </p>
+                                </article>
+                                <article><p>Nothing to see here, move along.</p></article>
+                                <article><p>Dear sir or madame, your path ends here.</p></article>
+                            </div>
+                        </section>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <script src="just-slide.js"></script>
+        <script>
+            var i = 0,
+                slider_identifier = 0,
+                previous_button = null,
+                next_button = null,
+                sliders = document.getElementsByClassName( 'slider' );
+            for( var i = 0; i < sliders.length; i++ ) {
+                slider_identifier = justSlide.make.slider( sliders[ i ] );
+                previous_button = sliders[ i ].getElementsByClassName( 'previous-button' )[ 0 ];
+                if ( previous_button ) justSlide.make.leftNavigationButton(
+                    previous_button,
+                    slider_identifier
+                );
+                next_button = sliders[ i ].getElementsByClassName( 'next-button' )[ 0 ];
+                if ( next_button ) {
+                    justSlide.make.rightNavigationButton(
+                        next_button,
+                        slider_identifier
+                    );
+                }
+            }
+        </script>
+    </body>
+</html>

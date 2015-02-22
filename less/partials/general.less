@@ -1,0 +1,42 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    * {
+        box-sizing: border-box;
+    }
+    font-size: 140%;
+}
+.page {
+    > button {
+        z-index: 999;
+        cursor: pointer;
+        position: fixed;
+        top: 50%;
+        height: 2em;
+        font-size: 1em;
+        border: none;
+        background: #2B2B2B;
+        line-height: 2em;
+        margin-top: -1em;
+        width: 2em;
+        text-align: center;
+        color: #fff;
+        &.next-button {
+            right: 0;
+        }
+    }
+    > div {
+        > article {
+            display: table;
+            height: 100vh;
+            > div {
+                display: table-cell;
+                vertical-align: middle;
+                text-align: center;
+            }
+            &:nth-child(1) {
+                background: #65C6BB;
+            }
+        }
+    }
+}

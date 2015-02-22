@@ -1,0 +1,23 @@
+{
+  "name": "just-slide-website",
+  "version": "1.0.0",
+  "homepage": "https://github.com/kerwitz/just-slide",
+  "authors": [
+    "kerwitz <marco@kerwitz.com>"
+  ],
+  "description": "The website for just-slide",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "lib/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "just-slide": "~0.9.1"
+  }
+}

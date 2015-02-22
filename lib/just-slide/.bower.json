@@ -1,0 +1,29 @@
+{
+  "name": "just-slide",
+  "version": "0.9.1",
+  "main": [
+    "css/just-slide.min.css",
+    "js/just-slide.min.js"
+  ],
+  "ignore": [
+    "css/themes",
+    "js/just-slide.js",
+    "less",
+    "Gruntfile.js",
+    "package.json",
+    ".gitattributes",
+    ".gitignore",
+    "bower.json"
+  ],
+  "homepage": "https://github.com/kerwitz/just-slide",
+  "_release": "0.9.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.9.1",
+    "commit": "8b5445db427909ac833da7937415a167ec8d9ae9"
+  },
+  "_source": "git://github.com/kerwitz/just-slide.git",
+  "_target": "~0.9.1",
+  "_originalSource": "just-slide",
+  "_direct": true
+}
