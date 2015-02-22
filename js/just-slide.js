@@ -76,7 +76,7 @@
          *
          * @author Marco Kerwitz <marco@kerwitz.com>
          * @param  {number} slider_identifier
-         * @return {number} Either the value of data-current-child or 0 if undefined
+         * @return {number} Either the value of data-current-slide or 0 if undefined
          */
         getCurrentSlideIndex: function( slider_identifier ) {
             var slider = _element_cache.slider[ slider_identifier ];
@@ -253,9 +253,9 @@
                 var slider  = _element_cache.slider[ slider_identifier ],
                     wrapper = _element_cache.wrapper[ slider_identifier ],
                     slides  = _element_cache.slides[ slider_identifier ];
-                // The wrapper needs to have enough space for each children.
+                // The wrapper needs to have enough space for each slide.
                 wrapper.style.width = ( 100 * slides.length ) + '%';
-                // Eeach children must take equal space within the wrapper.
+                // Eeach slide must take equal space within the wrapper.
                 for( var i = 0; i < slides.length; i++ ) {
                     slides[ i ].style.width = ( 100 / slides.length ) + '%';
                 }
@@ -274,21 +274,21 @@
                 // Get the required elements from our element cache.
                 var slider = _element_cache.slider[ slider_identifier ],
                     current_slide = _element_cache.slides[ slider_identifier ][ _helper.getCurrentSlideIndex( slider_identifier ) ];
-                // Make enough vertical space for the current child to be completely visible.
+                // Make enough vertical space for the current slide to be completely visible.
                 slider.style.height = current_slide.offsetHeight + 'px';
             }
         },
         navigate: {
             /**
-             * Navigates to the slide at child_index.
+             * Navigates to the slide at slide_index.
              *
              * @api
              * @author Marco Kerwitz <marco@kerwitz.com>
-             * @param  {number}  child_index
+             * @param  {number}  slide_index
              * @param  {element} slider_identifier
              */
             to: function( slide_index, slider_identifier ) {
-                _helper.updateCurrentChildIndex( slide_index, slider_identifier, true );
+                _helper.updateCurrentSlideIndex( slide_index, slider_identifier, true );
                 _helper.slide( slider_identifier );
             },
             /**
