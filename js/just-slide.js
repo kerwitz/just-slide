@@ -118,21 +118,6 @@
             element.className += ' ' + class_name;
         },
         /**
-         * Test if element has class.
-         *
-         * Not using classList because of lack of support in IE9.
-         *
-         * @author Marco Kerwitz <marco@kerwitz.com>
-         * @link   http://caniuse.com/#search=classList
-         * @param  {element} element
-         * @param  {string}  class_name
-         * @return {boolean}
-         */
-        hasClass: function( element, class_name ) {
-            var regex = new RegExp( _options.regex.class( class_name ) );
-            return element.className.matches( regex );
-        },
-        /**
          * Remove class from element.
          *
          * Not using classList because of lack of support in IE9.
