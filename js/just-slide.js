@@ -9,89 +9,92 @@
     var _options = {
         classes: {
             enhanced: 'just-slide',
-            at_last_child: 'at-last-child',
-            at_first_child: 'at-first-child'
+            at_last_slide: 'at-last-slide',
+            at_first_slide: 'at-first-slide'
         },
         attributes: {
-            current_child_index: 'data-current-child-index'
+            current_slide_index: 'data-current-slide'
         }
     },
     /**
      * Holds references to the slider elements.
      */
-    _element_cache = { slider: [], children: [], wrapper: [] },
+    _element_cache = { slider: [], slides: [], wrapper: [] },
     /**
      * _helper contains all private methods which should not be made accessible through the module.
      */
     _helper = {
         /**
-         * Update the data-current-child attribute on the slider_element.
+         * Update the data-current-slide attribute on the slider.
          *
-         * Provide 1 or -1 to shift the current-child one right or left or set is_absolute to be
-         * true to set current-child to a specific child.
+         * Provide 1 or -1 to shift the current slide index one right or left or set is_absolute to
+         * be true to set current slide to a specific value.
          *
-         *     // Shift to the next child.
-         *     _helper.updateCurrentChild( 1, slider );
+         *     // Shift to the next slide.
+         *     _helper.updateCurrentSlideIndex( 1, slide_identifierr );
          *
-         *     // Set to the fourth child.
-         *     _helper.updateCurrentChild( 3, slider, true );
+         *     // Set to the fourth slide.
+         *     _helper.updateCurrentSlideIndex( 3, slider_identifier, true );
          *
-         * This method will also have an eye on wether the slider is at the first or last child and
-         * applies _options.classes.at_first_child and _options.classes.at_last_child accordingly.
+         * This method will also have an eye on wether the slider is at the first or last slide and
+         * applies _options.classes.at_first_slide and _options.classes.at_last_slide accordingly.
          *
          * @author Marco Kerwitz <marco@kerwitz.com>
          * @param  {number}  amount              1, -1 or a specific index
-         * @param  {element} slider
+         * @param  {number}  slider_identifier
          * @param  {boolean} [is_absolute=false] Wether or not to set a specific index
-         * @return {number}  The new value of data-curent-child
+         * @return {number}  The new value of data-curent-slide
          */
-        updateCurrentChildIndex: function( amount, slider_identifier, is_absolute ) {
+        updateCurrentSlideIndex: function( amount, slider_identifier, is_absolute ) {
             var slider = _element_cache.slider[ slider_identifier ],
-                children = _element_cache.children[ slider_identifier ],
-                current_child_index = _helper.getCurrentChildIndex( slider_identifier );
+                slides = _element_cache.slides[ slider_identifier ],
+                current_slide_index = _helper.getCurrentSlideIndex( slider_identifier );
+            // If is_absolute is not defined let it default to false.
             is_absolute = typeof is_absolute !== 'undefined' ? false : is_absolute;
-            current_child_index = is_absolute ? amount : current_child_index + amount;
-            // If the new current_child_index is not within the allowed range exit early without
-            // storing it. We don't allow navigation beyond the existing child.
-            if ( current_child_index > children.length -1 || current_child_index < 0 ) return;
-            slider.setAttribute( _options.attributes.current_child_index, current_child_index );
+            // Update the current_slide_index (but don't store it yet).
+            current_slide_index = is_absolute ? amount : current_slide_index + amount;
+            // If the new current_slide_index is not within the allowed range exit early without
+            // storing it. We don't allow navigation beyond the existing slides.
+            if ( current_slide_index > slides.length -1 || current_slide_index < 0 ) return;
+            // If we made it here we are safe to store the current_slide_index.
+            slider.setAttribute( _options.attributes.current_slide_index, current_slide_index );
             // Update the boundary classes on the slider.
-            if ( current_child_index === 0 ) {
-                _helper.addClass( slider, _options.classes.at_first_child );
+            if ( current_slide_index === 0 ) {
+                _helper.addClass( slider, _options.classes.at_first_slide );
             } else {
-                _helper.removeClass( slider, _options.classes.at_first_child );
+                _helper.removeClass( slider, _options.classes.at_first_slide );
             }
-            if ( current_child_index === _element_cache.children[ slider_identifier ].length -1 ) {
-                _helper.addClass( slider, _options.classes.at_last_child );
+            if ( current_slide_index === slides.length -1 ) {
+                _helper.addClass( slider, _options.classes.at_last_slide );
             } else {
-                _helper.removeClass( slider, _options.classes.at_last_child );
+                _helper.removeClass( slider, _options.classes.at_last_slide );
             }
-            return current_child_index;
+            return current_slide_index;
         },
         /**
-         * Get the value of the data-current-child attribute of the slider element.
+         * Get the value of the data-current-slide attribute.
          *
          * @author Marco Kerwitz <marco@kerwitz.com>
-         * @param  {element} slider
-         * @return {number}  Either the value of data-current-child or 0 if undefined
+         * @param  {number} slider_identifier
+         * @return {number} Either the value of data-current-child or 0 if undefined
          */
-        getCurrentChildIndex: function( slider_identifier ) {
+        getCurrentSlideIndex: function( slider_identifier ) {
             var slider = _element_cache.slider[ slider_identifier ];
-            return parseInt( slider.getAttribute( _options.attributes.current_child_index ) ) || 0;
+            return parseInt( slider.getAttribute( _options.attributes.current_slide_index ) ) || 0;
         },
         /**
-         * Move the slider to the child at child_index.
+         * Move the slider to the slide at current-slide-index.
          *
-         * Assumes that the current child value has previously been updated.
+         * Assumes that the current slide value has previously been updated.
          *
          * @author Marco Kerwitz <marco@kerwitz.com>
          * @param  {number} slider_identifier
          */
         slide: function( slider_identifier ) {
-            var wrapper = _element_cache.wrapper[ slider_identifier ],
-                children = _element_cache.children[ slider_identifier ],
-                new_position = ( wrapper.offsetWidth / children.length ) * _helper.getCurrentChildIndex( slider_identifier ),
-                definition = 'translate(-' + new_position + 'px, 0px)';
+            var wrapper      = _element_cache.wrapper[ slider_identifier ],
+                slides       = _element_cache.slides[ slider_identifier ],
+                new_position = ( wrapper.offsetWidth / slides.length ) * _helper.getCurrentSlideIndex( slider_identifier ),
+                definition   = 'translate(-' + new_position + 'px, 0px)';
             // Freaking browser prefixes *sigh*..
             wrapper.style.transform       = definition;
             wrapper.style.webkitTransform = definition;
@@ -125,8 +128,10 @@
          * @param  {string}  class_name
          */
         removeClass: function( element, class_name ) {
-            var regex = new RegExp( '(?:^|\\s)' + class_name + '(?!\\S)' );
-            element.className = element.className.replace( regex, '' );
+            element.className = element.className.replace(
+                new RegExp( '(?:^|\\s)' + class_name + '(?!\\S)' ),
+                ''
+            );
         },
         /**
          * Assign a callback to the event of element.
@@ -150,14 +155,14 @@
     _self = {
         make: {
             /**
-             * Applies required classes and callbacks to the provided element to make it slide.
+             * Initializes justSlide on the specified element.
              *
              * The slider element should contain article elements wrapped within a div container:
              * - section: slider
              *   - div: wrapper
-             *      - article: child one
-             *      - article: child two
-             *      - article: child three
+             *      - article: slide one
+             *      - article: slide two
+             *      - article: slide three
              *   - /div: wrapper
              * - /section: slider
              *
@@ -167,11 +172,9 @@
              * @return {number}  Identifier for the slider
              */
             slider: function( element ) {
-                var slider_identifier;
-                slider_identifier = _self.make.elementCache( element );
-                // The enhanced class may be used in css.
+                var slider_identifier = _self.make.elementCache( element );
                 _helper.addClass( element, _options.classes.enhanced );
-                _helper.updateCurrentChildIndex( 0, slider_identifier );
+                _helper.updateCurrentSlideIndex( 0, slider_identifier );
                 _self.scale.horizontally( slider_identifier );
                 _helper.slide( slider_identifier );
                 return slider_identifier;
@@ -222,13 +225,13 @@
                     // Regenerate the element cache for this slider.
                     slider_element = _element_cache.slider[ slider_identifier ];
                     _element_cache.wrapper[ slider_identifier ] = slider_element.getElementsByTagName( 'div' )[ 0 ];
-                    _element_cache.children[ slider_identifier ] = slider_element.getElementsByTagName( 'article' );
+                    _element_cache.slides[ slider_identifier ] = slider_element.getElementsByTagName( 'article' );
                 } else {
                     slider_element = slider_identifier;
                     _element_cache.slider.push( slider_element );
                     slider_identifier = _element_cache.slider.length - 1;
                     _element_cache.wrapper[ slider_identifier ] = slider_element.getElementsByTagName( 'div' )[ 0 ];
-                    _element_cache.children[ slider_identifier ] = slider_element.getElementsByTagName( 'article' );
+                    _element_cache.slides[ slider_identifier ] = slider_element.getElementsByTagName( 'article' );
                 }
                 return slider_identifier;
             }
@@ -237,9 +240,9 @@
             /**
              * Update the dimensions of the different parts of the slider.
              *
-             * This method calculates the width of the child wrapper and the children based on the
-             * current width of the slider. It is called once on the intialization of the slider
-             * and you may call it manually whenever the \number of children changes.
+             * This method calculates the width of the wrapper and the slides based on the current
+             * width of the slider. It is called once on the intialization of the slider and you may
+             * call it manually whenever the number of slides changes.
              *
              * @api
              * @author Marco Kerwitz <marco@kerwitz.com>
@@ -247,21 +250,21 @@
              */
             horizontally: function( slider_identifier ) {
                 // Get the required elements from our element cache.
-                var slider   = _element_cache.slider[ slider_identifier ],
-                    wrapper  = _element_cache.wrapper[ slider_identifier ],
-                    children = _element_cache.children[ slider_identifier ];
+                var slider  = _element_cache.slider[ slider_identifier ],
+                    wrapper = _element_cache.wrapper[ slider_identifier ],
+                    slides  = _element_cache.slides[ slider_identifier ];
                 // The wrapper needs to have enough space for each children.
-                wrapper.style.width = ( 100 * children.length ) + '%';
+                wrapper.style.width = ( 100 * slides.length ) + '%';
                 // Eeach children must take equal space within the wrapper.
-                for( var i = 0; i < children.length; i++ ) {
-                    children[ i ].style.width = ( 100 / children.length ) + '%';
+                for( var i = 0; i < slides.length; i++ ) {
+                    slides[ i ].style.width = ( 100 / slides.length ) + '%';
                 }
             },
             /**
-             * Update the height of the slider based on the height of the currently visible child.
+             * Update the height of the slider based on the height of the currently visible slide.
              *
              * Called once on every slide. You may want to call it manually whenever the height of
-             * the current child has changed.
+             * the current slide has changed.
              *
              * @api
              * @author Marco Kerwitz <marco@kerwitz.com>
@@ -270,44 +273,44 @@
             vertically: function( slider_identifier ) {
                 // Get the required elements from our element cache.
                 var slider = _element_cache.slider[ slider_identifier ],
-                    current_child = _element_cache.children[ slider_identifier ][ _helper.getCurrentChildIndex( slider_identifier ) ];
+                    current_slide = _element_cache.slides[ slider_identifier ][ _helper.getCurrentSlideIndex( slider_identifier ) ];
                 // Make enough vertical space for the current child to be completely visible.
-                slider.style.height = current_child.offsetHeight + 'px';
+                slider.style.height = current_slide.offsetHeight + 'px';
             }
         },
         navigate: {
             /**
-             * Navigates to the child at child_index.
+             * Navigates to the slide at child_index.
              *
              * @api
              * @author Marco Kerwitz <marco@kerwitz.com>
              * @param  {number}  child_index
              * @param  {element} slider_identifier
              */
-            to: function( child_index, slider_identifier ) {
-                _helper.updateCurrentChildIndex( child_index, slider_identifier, true );
+            to: function( slide_index, slider_identifier ) {
+                _helper.updateCurrentChildIndex( slide_index, slider_identifier, true );
                 _helper.slide( slider_identifier );
             },
             /**
-             * Navigates to the child left to the current one.
+             * Navigates to the slide left to the current one.
              *
              * @api
              * @author Marco Kerwitz <marco@kerwitz.com>
              * @param  {element} slider_identifier
              */
             left: function( slider_identifier ) {
-                _helper.updateCurrentChildIndex( -1, slider_identifier );
+                _helper.updateCurrentSlideIndex( -1, slider_identifier );
                 _helper.slide( slider_identifier );
             },
             /**
-             * Navigates to the child right to the current one.
+             * Navigates to the slide right to the current one.
              *
              * @api
              * @author Marco Kerwitz <marco@kerwitz.com>
              * @param  {element} slider_element
              */
             right: function( slider_identifier ) {
-                _helper.updateCurrentChildIndex( 1, slider_identifier );
+                _helper.updateCurrentSlideIndex( 1, slider_identifier );
                 _helper.slide( slider_identifier );
             }
         }
