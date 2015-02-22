@@ -309,7 +309,7 @@
              * @author Marco Kerwitz <marco@kerwitz.com>
              * @param  {element} slider_element
              */
-            right: function( slider_element ) {
+            right: function( slider_identifier ) {
                 _helper.updateCurrentChildIndex( 1, slider_identifier );
                 _helper.slide( slider_identifier );
             }
