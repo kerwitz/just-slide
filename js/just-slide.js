@@ -7,9 +7,6 @@
      * _options contains all .. options.
      */
     var _options = {
-        regex: {
-            class: function( class_name ) { return '(?:^|\\s)' + class_name + '(?!\\S)'; }
-        },
         classes: {
             enhanced: 'just-slide',
             at_last_child: 'at-last-child',
@@ -128,7 +125,7 @@
          * @param  {string}  class_name
          */
         removeClass: function( element, class_name ) {
-            var regex = new RegExp( _options.regex.class( class_name ) );
+            var regex = new RegExp( '(?:^|\\s)' + class_name + '(?!\\S)' );
             element.className = element.className.replace( regex, '' );
         },
         /**
