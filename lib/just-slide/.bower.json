@@ -1,6 +1,6 @@
 {
   "name": "just-slide",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "main": [
     "css/just-slide.min.css",
     "js/just-slide.min.js"
@@ -16,14 +16,13 @@
     "bower.json"
   ],
   "homepage": "https://github.com/kerwitz/just-slide",
-  "_release": "0.9.1",
+  "_release": "0.9.2",
   "_resolution": {
     "type": "version",
-    "tag": "v0.9.1",
-    "commit": "8b5445db427909ac833da7937415a167ec8d9ae9"
+    "tag": "v0.9.2",
+    "commit": "b9bd3e6ff4d06b06b03ccb8738d15910767493d2"
   },
   "_source": "git://github.com/kerwitz/just-slide.git",
   "_target": "~0.9.1",
-  "_originalSource": "just-slide",
-  "_direct": true
+  "_originalSource": "just-slide"
 }

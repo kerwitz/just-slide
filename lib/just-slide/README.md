@@ -1,6 +1,7 @@
 # just-slide
 
 [![Flattr](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=kerwitz&url=https%3A%2F%2Fgithub.com%2Fkerwitz%2Fjust-slide)
+[![Bower version](https://badge.fury.io/bo/just-slide.svg)](http://badge.fury.io/bo/just-slide)
 
 A very simplistic pure Javascript, no-dependencies approach to a slider component.
 
@@ -176,19 +177,23 @@ justSlide.navigate.left( slider_identifier );
 
 ## Contributing
 
-1. To contribute please fork this repository
+1. To contribute please fork this repository:
+
    ```
    git clone https://github.com/kerwitz/just-slide.git
    ```
 2. Install all dependencies with npm:
+
    ```
    cd path\to\just-slide
    npm install
    ```
 3. After that you can make use of Grunt to watch the less and Javascript files within the project:
+
    ```
    grunt
    ```
+
    This will initiate the watch task and makes sure that the CSS and minified Javascript files are
    always up to date.
 4. Once you have made the desired changes to your fork you can open a pull request on this repository.
@@ -196,7 +201,8 @@ justSlide.navigate.left( slider_identifier );
 
 ## Changelog
 
-Have a look at the [releases](https://github.com/kerwitz/just-slide/releases).
+Have a look at the [changelog](https://github.com/kerwitz/just-slide/blob/master/CHANGELOG.md) and
+the [releases](https://github.com/kerwitz/just-slide/releases).
 
 ## License: MIT
 Copyright (c) 2015 Marco Kerwitz <marco@kerwitz.com>
