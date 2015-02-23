@@ -2,6 +2,24 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.9.2](https://github.com/kerwitz/just-slide/releases/tag/v0.9.2)
+[Full changelog](https://github.com/kerwitz/just-slide/compare/v0.9.1...v0.9.2)
+
+### Added
+- Added bower version badge to readme
+- Added CHANGELOG.md file
+
+### Fixed
+- Fixed wrong argument name on navigate.right
+
+### Changed
+- Moved className regex from options to the last method using it
+- Replaced "child", "children" with "slide", "slides"
+- Found some more occurrences of "child".
+
+### Removed
+- Removed unused function: hasClass
+
 ## [0.9.1](https://github.com/kerwitz/just-slide/releases/tag/v0.9.1)
 [Full changelog](https://github.com/kerwitz/just-slide/compare/v0.9.0...v0.9.1)
 
