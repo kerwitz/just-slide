@@ -16,6 +16,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Moved className regex from options to the last method using it
 - Replaced "child", "children" with "slide", "slides"
 - Found some more occurrences of "child".
+- Fixed line breaks in README and added reference to the change log
 
 ### Removed
 - Removed unused function: hasClass
