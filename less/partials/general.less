@@ -7,6 +7,12 @@ html, body {
     font-size: 140%;
 }
 .page {
+    &.at-first-slide > .previous-button {
+        display: none;
+    }
+    &.at-last-slide > .previous-button {
+        display: none;
+    }
     > button {
         z-index: 999;
         cursor: pointer;
@@ -26,6 +32,7 @@ html, body {
         }
     }
     > div {
+        transition: all .3s ease;
         > article {
             display: table;
             height: 100vh;
