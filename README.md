@@ -14,6 +14,10 @@ dependency.
 1. Grab the [current release](https://github.com/kerwitz/just-slide/releases) or install using bower:
 
    `bower install just-slide`
+
+   > **Note:** the files in this repository might be unstable, please install the latest release
+   > in favor over taking the files from the repository directly.
+   
 2. Include the needed files in your html file:
 
    ```html
