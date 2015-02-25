@@ -17,7 +17,7 @@ dependency.
 
    > **Note:** the files in this repository might be unstable, please install the latest release
    > in favor over taking the files from the repository directly.
-   
+
 2. Include the needed files in your html file:
 
    ```html
@@ -88,8 +88,8 @@ You can use CSS transforms to animate the slide effect and / or the height adjus
 | Class            | Element | Description                                                                                          |
 |------------------|---------|------------------------------------------------------------------------------------------------------|
 | `just-slide`     | slider  | Applied to the slider once it gets enhanced through `justSlide.make.slider()`.                       |
-| `at-first-child` | slider  | just-slide will apply this class to the container if there are no previous children to navigate to.  |
-| `at-last-child`  | slider  | just-slide will apply this class to the container if there are no following children to navigate to. |
+| `at-first-slide` | slider  | just-slide will apply this class to the container if there are no previous children to navigate to.  |
+| `at-last-slide`  | slider  | just-slide will apply this class to the container if there are no following children to navigate to. |
 
 ### Navigating within the slider
 You have two choices for setting up navigation controls for your slider. You may either use the
@@ -101,13 +101,13 @@ Have a look at the public API depicted below for information about the listed me
 
 ### Data attributes
 
-#### data-current-child-index (default: 0)
+#### data-current-slide (default: 0)
 This attributes holds the currently visible child of the slider. It is updated whenever one of the
 `justSlide.navigate.*` functions is called. Initial value defaults to `0`, so the slider will start
 off at the first slide in the source. Note that counting starts at 0. You can customize at which slide the
 slider should start off by providing your own value on the markup:
 ```html
-<section id="slider" data-current-child="1">
+<section id="slider" data-current-slide="1">
     <!-- ... -->
 </section>
 ```
