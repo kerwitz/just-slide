@@ -1,7 +1,10 @@
 ( function( name, definition ) {
     if ( typeof define === 'function' && typeof define.amd === 'object' ) define( definition );
     else if ( typeof module !== 'undefined' ) module.exports = definition();
-    else this[ name ] = definition();
+    else {
+        this.kerwitz || ( this.kerwitz = {} );
+        this.kerwitz[ name ] = definition();
+    }
 }( 'justSlide', function() {
     /**
      * _options contains all .. options.
