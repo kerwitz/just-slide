@@ -122,7 +122,7 @@
         },
         /**
          * Remove class from element.
-         *
+         * 
          * Not using classList because of lack of support in IE9.
          *
          * @author Marco Kerwitz <marco@kerwitz.com>
