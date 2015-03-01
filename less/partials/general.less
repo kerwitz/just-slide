@@ -1,10 +1,11 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:100,400,300,700);
 html, body {
     margin: 0;
     padding: 0;
     * {
         box-sizing: border-box;
     }
-    font-size: 140%;
+    font: 140%/1.5 "Roboto", Verdana, sans-serif
 }
 .page {
     &.at-first-slide > .previous-button {
@@ -43,6 +44,17 @@ html, body {
             }
             &:nth-child(1) {
                 background: #65C6BB;
+                h1 {
+                    font-weight: 100;
+                    font-size: 3em;
+                    margin: 0;
+                }
+                p {
+                    margin: 1em auto .5em auto;
+                    max-width: 800px;
+                    font-weight: 100;
+                    line-height: 1em;
+                }
             }
         }
     }
